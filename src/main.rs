@@ -182,8 +182,7 @@ fn main() -> Result<(), ParquetError> {
             Ok(batch) => {
                 if let Some(batch) = batch {
                     writer.write(&batch)?
-                }
-                else {
+                } else {
                     break;
                 }
             }
