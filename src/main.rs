@@ -1,5 +1,5 @@
 use arrow::json::ReaderBuilder;
-use clap::{Clap, ValueHint};
+use clap::{Parser, ValueHint};
 use parquet::{
     arrow::ArrowWriter,
     basic::{Compression, Encoding},
@@ -34,7 +34,7 @@ enum ParquetEncoding {
     RLE_DICTIONARY,
 }
 
-#[derive(Clap)]
+#[derive(Parser)]
 #[clap(version = env!("CARGO_PKG_VERSION"), author = "Dominik Moritz <domoritz@cmu.edu>")]
 struct Opts {
     /// Input JSON file.
