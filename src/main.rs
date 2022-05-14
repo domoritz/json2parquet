@@ -8,7 +8,7 @@ use parquet::{
 };
 use serde_json::{to_string_pretty, Value};
 use std::fs::File;
-use std::io::{BufReader, SeekFrom, Seek};
+use std::io::{BufReader, Seek, SeekFrom};
 use std::path::PathBuf;
 use std::sync::Arc;
 
@@ -131,17 +131,13 @@ fn main() -> Result<(), ParquetError> {
             }
         }
         _ => {
-
             let mut buf_reader = BufReader::new(&input);
 
-            match arrow::json::reader::infer_json_schema(
-                &mut buf_reader,
-                opts.max_read_records,
-            ) {
+            match arrow::json::reader::infer_json_schema(&mut buf_reader, opts.max_read_records) {
                 Ok(schema) => {
                     input.seek(SeekFrom::Start(0))?;
                     Ok(schema)
-                },
+                }
                 Err(error) => Err(ParquetError::General(format!(
                     "Error inferring schema: {}",
                     error
@@ -162,8 +158,7 @@ fn main() -> Result<(), ParquetError> {
     let output = File::create(opts.output)?;
 
     let schema_ref = Arc::new(schema);
-    let builder = ReaderBuilder::new()
-        .with_schema(schema_ref);
+    let builder = ReaderBuilder::new().with_schema(schema_ref);
     let reader = builder.build(input)?;
 
     let mut props = WriterProperties::builder()
