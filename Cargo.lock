@@ -61,6 +61,31 @@ dependencies = [
 ]
 
 [[package]]
+name = "arrow"
+version = "20.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c72a69495f06c8abb65b76a87be192a26fa724380d1f292d4e558a32afed9989"
+dependencies = [
+ "ahash",
+ "bitflags",
+ "chrono",
+ "flatbuffers",
+ "half",
+ "hashbrown",
+ "hex",
+ "indexmap",
+ "lazy_static",
+ "lexical-core",
+ "multiversion",
+ "num",
+ "regex",
+ "regex-syntax",
+ "serde",
+ "serde_derive",
+ "serde_json",
+]
+
+[[package]]
 name = "atty"
 version = "0.2.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -348,7 +373,7 @@ dependencies = [
 name = "json2parquet"
 version = "0.4.0"
 dependencies = [
- "arrow",
+ "arrow 19.0.0",
  "clap",
  "parquet",
  "serde_json",
@@ -604,22 +629,25 @@ checksum = "8e22443d1643a904602595ba1cd8f7d896afe56d26712531c5ff73a15b2fbf64"
 
 [[package]]
 name = "parquet"
-version = "19.0.0"
+version = "20.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2cfcf237362047888b342e4f0e213a9b303133b085853e447f2c58e65e00099d"
+checksum = "d0f0af698fcf8d1d9f2971766ebef25821ffe8c39c91837c276dcd97e075d950"
 dependencies = [
- "arrow",
+ "ahash",
+ "arrow 20.0.0",
  "base64",
  "brotli",
  "byteorder",
  "bytes",
  "chrono",
  "flate2",
+ "hashbrown",
  "lz4",
  "num",
  "num-bigint",
  "parquet-format",
  "rand",
+ "seq-macro",
  "snap",
  "thrift",
  "zstd",
@@ -738,6 +766,12 @@ name = "ryu"
 version = "1.0.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "73b4b750c782965c211b42f022f59af1fbceabdd026623714f104152f1ec149f"
+
+[[package]]
+name = "seq-macro"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0772c5c30e1a0d91f6834f8e545c69281c099dfa9a3ac58d96a9fd629c8d4898"
 
 [[package]]
 name = "serde"
